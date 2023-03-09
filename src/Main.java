@@ -11,27 +11,33 @@ public class Main {
 
     }
 
-    public static String calc(String input) {
+    public static String calc(String input)throws ArithmeticException {
         try {
+
             Scanner sc = new Scanner(input);
             String x = sc.next();
             String op = sc.next();
             String y = sc.next();
 
+            if (sc.hasNext()) {
+                throw new ArithmeticException("Throws Exception");
+            }
             // присвоил значения символов до каждого пробела переменным
 
             try {
-                if (op.equals("-"))
-                    return "" + (Integer.parseInt(x) - Integer.parseInt(y));
+                if ((0<Integer.parseInt(x) && Integer.parseInt(x)<11) && (0<Integer.parseInt(y) && Integer.parseInt(y)<11)) {
+                    if (op.equals("-"))
+                        return "" + (Integer.parseInt(x) - Integer.parseInt(y));
 
-                if (op.equals("+"))
-                    return "" + (Integer.parseInt(x) + Integer.parseInt(y));
+                    if (op.equals("+"))
+                        return "" + (Integer.parseInt(x) + Integer.parseInt(y));
 
-                if (op.equals("*"))
-                    return "" + (Integer.parseInt(x) * Integer.parseInt(y));
+                    if (op.equals("*"))
+                        return "" + (Integer.parseInt(x) * Integer.parseInt(y));
 
-                if (op.equals("/"))
-                    return "" + (Integer.parseInt(x) / Integer.parseInt(y));
+                    if (op.equals("/"))
+                        return "" + (Integer.parseInt(x) / Integer.parseInt(y));
+                }
 
                 // если введены арабские числа то сравниваю операцию и возвращаю результат
 
